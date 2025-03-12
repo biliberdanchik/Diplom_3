@@ -2,7 +2,7 @@ package tests;
 
 import client.StellarBurgersServiceClient;
 import com.github.javafaker.Faker;
-import driver.WebDriverFactory;
+import utils.WebDriverFactory;
 import enums.EntryPointsForAuthorization;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
