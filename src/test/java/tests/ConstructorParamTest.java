@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.junit4.DisplayName;
 import utils.WebDriverFactory;
 import org.junit.After;
 import org.junit.Before;
@@ -48,6 +49,7 @@ public class ConstructorParamTest {
     }
 
     @Test
+    @DisplayName("Проверка переходов между разделами конструктора")
     public void checkingTransitionToDifferentSection() throws InterruptedException {
         driver.get(URL_MAIN_PAGE);
 
