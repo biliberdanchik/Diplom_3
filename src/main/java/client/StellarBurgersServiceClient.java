@@ -8,7 +8,22 @@ public class StellarBurgersServiceClient {
 
     private final String baseURI = "https://stellarburgers.nomoreparties.site";
 
-    @Step("Получение токена пользователя")
+    @Step("Клиент - создание нового пользователя и получение токена")
+    public String createUserAndGetToken(String name, String email, String password) {
+        return given()
+                .log()
+                .all()
+                .baseUri(baseURI)
+                .header("Content-Type", "application/json")
+                .body(String.format("{\"email\": \"%s\", \"password\": \"%s\",\"name\": \"%s\"}", email, password, name))
+                .when()
+                .post("/api/auth/register")
+                .then()
+                .log()
+                .all().extract().jsonPath().getString("accessToken");
+    }
+
+    @Step("Клиент - Получение токена пользователя")
     public String getAccessToken(String email, String password) {
         return given()
                     .log()
@@ -24,7 +39,7 @@ public class StellarBurgersServiceClient {
     }
 
 
-    @Step("Удаление созданного пользователя")
+    @Step("Клиент - Удаление созданного пользователя")
     public void deleteUser(String accessToken) {
         given()
                 .log()
